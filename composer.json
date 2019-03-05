@@ -55,7 +55,6 @@
             "php": "5.5.9"
         },
         "sort-packages": true,
-        "cache-dir": "C:\\Users\\i171876\\symfony\\cache",
         "vendor-dir": "C:\\Users\\i171876\\symfony\\vendor",
         "bin-dir": "C:\\Users\\i171876\\symfony\\bin"
     },

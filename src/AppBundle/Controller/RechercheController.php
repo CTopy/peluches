@@ -21,6 +21,7 @@ use DeezerAPI\Search as DeezerSearch ;
 use AppBundle\Entity\Catalogue\Livre;
 use AppBundle\Entity\Catalogue\Musique;
 use AppBundle\Entity\Catalogue\Piste;
+use AppBundle\Entity\Catalogue\Peluche;
 
 class RechercheController extends Controller
 {
@@ -35,7 +36,7 @@ class RechercheController extends Controller
      */
     public function afficheRechercheAction(Request $request, LoggerInterface $logger)
     {
-		$this->initAmazon() ;
+		$this->initBdd() ;
 		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a");
 		$articles = $query->getResult();
 		return $this->render('recherche.html.twig', [
@@ -59,6 +60,36 @@ class RechercheController extends Controller
             'articles' => $articles,
         ]);
     }
+    
+    private function initBdd() {
+        if (count($this->entityManager->getRepository("AppBundle\Entity\Catalogue\Article")->findAll()) == 0) {
+            //modele : [titre, prix, disponibilite, image, [hauteur, largeur, longueur], texture]
+            $articles = [
+                ["Pusheen le Chat avec Cookie", 30, 100, "https://images-na.ssl-images-amazon.com/images/I/81yoVFBAxpL._SL1500_.jpg", [20, 10, 10], "Squishy"],
+                ["Nahyë le Narval", 5, 100, "https://i.ebayimg.com/images/g/rrMAAOSw1TFb2Jt3/s-l640.jpg", [5, 5, 5], "Squishy"]
+            ];
+            
+            $index = 1;
+            foreach ($articles as $article) {
+                $entity = new Peluche();
+                $entity->setRefArticle($index);
+                $entity->setTitre($article[0]);
+                $entity->setPrix($article[1]);
+                $entity->setDisponibilite($article[2]);
+                $entity->setImage($article[3]);
+                
+                $entity->setHauteur($article[4][0]);
+                $entity->setLargeur($article[4][1]);
+                $entity->setHauteur($article[4][2]);
+                
+                $entity->setTexture($article[5]);
+                
+                $this->entityManager->persist($entity);
+                $this->entityManager->flush();
+                $index++;
+            }
+        }
+    }
 	
 	private function initAmazon() {
 		if (count($this->entityManager->getRepository("AppBundle\Entity\Catalogue\Article")->findAll()) == 0) {
@@ -79,8 +110,8 @@ class RechercheController extends Controller
 			$apaiIO = new ApaiIO($conf);
 
 			$search = new Search();
-			$search->setCategory('Music');
-			$keywords = 'Ibrahim Maalouf' ;
+			$search->setCategory('Toy');
+			$keywords = 'Plush' ;
 			$search->setKeywords($keywords);
 
 			//$search->setCategory('Books');
@@ -96,7 +127,8 @@ class RechercheController extends Controller
 					if ($child_1->getName() === "Items") {
 						foreach ($child_1->children() as $child_2) {
 							if ($child_2->getName() === "Item") {
-								if ($child_2->ItemAttributes->ProductGroup->__toString() === "Music") {
+								if ($child_2->ItemAttributes->ProductGroup->__toString() === "Toy") {
+                                    
 									$entityMusique = new Musique();
 									$entityMusique->setRefArticle($child_2->ASIN);
 									$entityMusique->setTitre($child_2->ItemAttributes->Title);
