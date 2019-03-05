@@ -28,12 +28,20 @@ class Peluche extends Article
      */
     private $hauteur;
     
+    public function setHauteur($h) {
+        $this->hauteur = $h;
+    }
+    
     /**
      * @var string
      *
      * @ORM\Column(name="longueur", type="float")
      */
     private $longueur;
+    
+    public function setLongueur($lo) {
+        $this->longueur = $lo;
+    }
     
     /**
      * @var string
@@ -42,6 +50,16 @@ class Peluche extends Article
      */
     private $largeur;
     
+    public function getDimensions() {
+        return ["hauteur" => $this->hauteur, 
+                "largeur" => $this->largeur, 
+                "longueur" => $this->longueur];
+    }
+    
+    public function setLargeur($la) {
+        $this->largeur = $la;
+    }
+    
     /**
      * @var string
      *
@@ -49,42 +67,27 @@ class Peluche extends Article
      */
     private $texture;
     
-    /**
-    *   Hauteur-largeur-longueur
-    */
-    public function getDimensions() {
-        return [$this->hauteur, $this->largeur, $this->longueur];
-    }
-    
-    public function setDimensions($h, $la, $lo) {
-        $this->hauteur = $h;
-        $this->largeur = $la;
-        $this->longueur = $lo;
-    }
-    
-    public function setHauteur($h) {
-        $this->hauteur = $h;
-    }
-    
-    public function setLargeur($la) {
-        $this->largeur = $la;
-    }
-    
-    public function setLongueur($lo) {
-        $this->longueur = $lo;
-    }
-    
     public function getTexture() {
         return $this->texture;
     }
     
     public function setTexture($string) {
-        $cond = true;
-        foreach ($this->TEXTURES_ENUM as $tex)
-            $cond = $cond && (strcmp($tex, $string));
-        
-        if ($cond)
-            $this->texture = $string;
+        $this->texture = $string;
+    }
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="coloris", type="string")
+     */
+    private $coloris;
+    
+    public function getColoris() {
+        return $this->coloris;
+    }
+    
+    public function setColoris($nvColor) {
+        $this->coloris = $nvColor;
     }
 }
 
