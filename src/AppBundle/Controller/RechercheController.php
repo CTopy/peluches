@@ -65,6 +65,7 @@ class RechercheController extends Controller
         if (count($this->entityManager->getRepository("AppBundle\Entity\Catalogue\Article")->findAll()) == 0) {
             //modele : [titre, prix, disponibilite, image, [hauteur, largeur, longueur], texture]
             $articles = [
+<<<<<<< other/peupler-bdd-2
                 ['Pusheen',30,100,'https://images-na.ssl-images-amazon.com/images/I/81yoVFBAxpL._SL1500_.jpg',[20,10,10],'Squishy','Cookie'],
                 ['Pusheen',28,100,'https://m.media-amazon.com/images/I/61BGsbnzNVL._SR500,500_.jpg',[20,10,10],'Squishy','Glace'],
                 ['Pusheen',35,100,'https://http2.mlstatic.com/peluche-pusheen-gato-unicornio-original-gund-envio-incluido-D_NQ_NP_889370-MLM26715198905_012018-F.jpg',[20,10,20],'Squishy','Unicorn'],
@@ -114,6 +115,11 @@ class RechercheController extends Controller
                 ['Alpacasso',30,100,'https://www.dhresource.com/webp/m/0x0s/f2-albu-g4-M01-12-73-rBVaEFnPJMuACxFCAAFX8jAN0r8944.jpg/rainbow-alpacasso-plush-13cm-cute-kawaii.jpg',[30,25,20],'Fluffy','RVB'],
                 ['Alpacasso',18,100,'http://stores-fast-infrastructure.com/content/3/81006_Super-mignon-35-cm-alpacasso-cheval-debout-topper-chapeau-alpaga-en-peluche-mouton-animal-jouet-poup%C3%A9e-cadeau-danniversaire-de-no%C3%ABl-denfants-dans-en.jpg',[20,15,15],'Fluffy','Standard']
                 ];
+=======
+                ["Pusheen le Chat", 30, 100, "https://images-na.ssl-images-amazon.com/images/I/81yoVFBAxpL._SL1500_.jpg", [20, 10, 10], "Squishy", "avec Cookie"],
+                ["Nahyë le Narval", 5, 100, "https://i.ebayimg.com/images/g/rrMAAOSw1TFb2Jt3/s-l640.jpg", [5, 5, 5], "Squishy", "Standard"]
+            ];
+>>>>>>> Relation OneToMany
             
             $index = 1;
             foreach ($articles as $article) {
