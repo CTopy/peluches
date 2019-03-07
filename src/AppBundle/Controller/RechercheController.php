@@ -36,7 +36,6 @@ class RechercheController extends Controller
      */
     public function afficheRechercheAction(Request $request, LoggerInterface $logger)
     {
-		$this->initBdd() ;
 		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a");
 		$articles = $query->getResult();
 		return $this->render('recherche.html.twig', [
@@ -65,11 +64,6 @@ class RechercheController extends Controller
         if (count($this->entityManager->getRepository("AppBundle\Entity\Catalogue\Article")->findAll()) == 0) {
             //modele : [titre, prix, disponibilite, image, [hauteur, largeur, longueur], texture]
             $articles = [
-<<<<<<< other/peupler-bdd-2
-<<<<<<< other/peupler-bdd-2
-<<<<<<< other/peupler-bdd-2
-=======
->>>>>>> BDD Peluches
                 ['Pusheen',30,100,'https://images-na.ssl-images-amazon.com/images/I/81yoVFBAxpL._SL1500_.jpg',[20,10,10],'Squishy','Cookie'],
                 ['Pusheen',28,100,'https://m.media-amazon.com/images/I/61BGsbnzNVL._SR500,500_.jpg',[20,10,10],'Squishy','Glace'],
                 ['Pusheen',35,100,'https://http2.mlstatic.com/peluche-pusheen-gato-unicornio-original-gund-envio-incluido-D_NQ_NP_889370-MLM26715198905_012018-F.jpg',[20,10,20],'Squishy','Unicorn'],
@@ -98,18 +92,8 @@ class RechercheController extends Controller
                 ['Squeezamals',5,100,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSom6p-FYhvMocHbTif98KwID6DhRSOG-3vqBm_r2UFP3bg0BAQRw',[5,5,5],'Squishy','Poussin'],
                 ['Squeezamals',5,100,'https://images-na.ssl-images-amazon.com/images/I/61HMcnAsc6L._SX425_.jpg',[5,5,5],'Squishy','Niglo Marron'],
                 ['Squeezamals',5,100,'https://images-na.ssl-images-amazon.com/images/I/516fh-Q%2B86L._SX425_.jpg',[5,5,5],'Squishy','Chien'],
-<<<<<<< other/peupler-bdd-2
-<<<<<<< other/peupler-bdd-2
                 ['Squeezamals',5,100,'https://cdn3.volusion.com/lvpmx.fjznp/v/vspfiles/photos/SQS-S2-004-1.jpg',[5,5,5],'Squishy','Narval Rose'],
                 ['Squeezamals',5,100,'https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/275764/385326/sques2graciegiraffe__10144.1540308106.jpg?c=2&imbypass=on',[5,5,5],'Squishy','Girafe'],
-=======
-                ['Squeezamals',5,100,'https://www.toysntuck.co.uk/image-cache/s/q/u/e/e/squeezamals-series-2-medium-plush---narcissa-the-narwhal-5867d1575e5cc1aa4c3cf20c38a1460bd4588c04.jpeg',[5,5,5],'Squishy','Narval Rose'],
-                ['Squeezamals',5,100,'https://www.toysntuck.co.uk/image-cache/s/q/u/e/e/squeezamals-series-2-medium-plush---gracie-the-giraffe-b127b0a68a6a68b5a0690358a943e68783735f4a.jpeg',[5,5,5],'Squishy','Girafe'],
->>>>>>> BDD Peluches
-=======
-                ['Squeezamals',5,100,'https://cdn3.volusion.com/lvpmx.fjznp/v/vspfiles/photos/SQS-S2-004-1.jpg',[5,5,5],'Squishy','Narval Rose'],
-                ['Squeezamals',5,100,'https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/275764/385326/sques2graciegiraffe__10144.1540308106.jpg?c=2&imbypass=on',[5,5,5],'Squishy','Girafe'],
->>>>>>> Modif BDD
                 ['Squeezamals',5,100,'https://mmtcdn.blob.core.windows.net/084395e6770c4e0ebc5612f000acae8f/mmtcdn/Products22752-640x640-340078641.jpg',[5,5,5],'Squishy','Pingouin'],
                 ['Squeezamals',5,100,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBAPhrvJoyzXWtwWhkcfcqV49zdoYJ05GLYau9dOD6lbbCL2M7',[5,5,5],'Squishy','Mouton Rose'],
                 ['Squeezamals',5,100,'https://images-na.ssl-images-amazon.com/images/I/61XdzQJp3IL._SX425_.jpg',[5,5,5],'Squishy','Niglo Rose'],
@@ -125,29 +109,10 @@ class RechercheController extends Controller
                 ['Squeezamals',5,100,'https://www.picclickimg.com/d/l400/pict/372584101633_/Squeezamals-Series-2-Medium-Plush-Nadia-the.jpg',[5,5,5],'Squishy','Narval Bleu'],
                 ['Molang',20,100,'https://images-na.ssl-images-amazon.com/images/I/71kGSIoejSL._SX466_.jpg',[20,15,15],'Squishy','Standard'],
                 ['Doraemon',35,100,'https://shop.r10s.jp/grengren/cabinet/01509976/02126982/02661380/img61096487.jpg',[30,25,20],'Dur','Standard'],
-<<<<<<< other/peupler-bdd-2
-<<<<<<< other/peupler-bdd-2
                 ['Alpacasso',30,100,'https://d3ieicw58ybon5.cloudfront.net/ex/350.350/shop/product/dc0ac784dc884266a03c95c8c43468b8.jpg',[30,25,20],'Fluffy','CMJN'],
                 ['Alpacasso',30,100,'https://www.dhresource.com/webp/m/0x0s/f2-albu-g4-M01-12-73-rBVaEFnPJMuACxFCAAFX8jAN0r8944.jpg/rainbow-alpacasso-plush-13cm-cute-kawaii.jpg',[30,25,20],'Fluffy','RVB'],
                 ['Alpacasso',18,100,'http://stores-fast-infrastructure.com/content/3/81006_Super-mignon-35-cm-alpacasso-cheval-debout-topper-chapeau-alpaga-en-peluche-mouton-animal-jouet-poup%C3%A9e-cadeau-danniversaire-de-no%C3%ABl-denfants-dans-en.jpg',[20,15,15],'Fluffy','Standard']
                 ];
-=======
-=======
->>>>>>> Retour à entité peluche
-                ["Pusheen le Chat", 30, 100, "https://images-na.ssl-images-amazon.com/images/I/81yoVFBAxpL._SL1500_.jpg", [20, 10, 10], "Squishy", "avec Cookie"],
-                ["Nahyë le Narval", 5, 100, "https://i.ebayimg.com/images/g/rrMAAOSw1TFb2Jt3/s-l640.jpg", [5, 5, 5], "Squishy", "Standard"]
-            ];
->>>>>>> Relation OneToMany
-=======
-                ['Alpacasso',30,100,'https://d3ieicw58ybon5.cloudfront.net/ex/350.350/shop/product/dc0ac784dc884266a03c95c8c43468b8.jpg',[30,25,20],'Fluffy','CMJIN'],
-                ['Alpacasso',30,100,'https://www.dhresource.com/webp/m/0x0s/f2-albu-g4-M01-12-73-rBVaEFnPJMuACxFCAAFX8jAN0r8944.jpg/rainbow-alpacasso-plush-13cm-cute-kawaii.jpg',[30,25,20],'Fluffy','RVB']
-=======
-                ['Alpacasso',30,100,'https://d3ieicw58ybon5.cloudfront.net/ex/350.350/shop/product/dc0ac784dc884266a03c95c8c43468b8.jpg',[30,25,20],'Fluffy','CMJN'],
-                ['Alpacasso',30,100,'https://www.dhresource.com/webp/m/0x0s/f2-albu-g4-M01-12-73-rBVaEFnPJMuACxFCAAFX8jAN0r8944.jpg/rainbow-alpacasso-plush-13cm-cute-kawaii.jpg',[30,25,20],'Fluffy','RVB'],
-                ['Alpacasso',18,100,'http://stores-fast-infrastructure.com/content/3/81006_Super-mignon-35-cm-alpacasso-cheval-debout-topper-chapeau-alpaga-en-peluche-mouton-animal-jouet-poup%C3%A9e-cadeau-danniversaire-de-no%C3%ABl-denfants-dans-en.jpg',[20,15,15],'Fluffy','Standard']
->>>>>>> Modif BDD
-                ];
->>>>>>> BDD Peluches
             
             $index = 1;
             foreach ($articles as $article) {
