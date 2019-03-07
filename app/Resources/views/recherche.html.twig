@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>ACCUEIL - PLUSHLAND</title>
+        <link rel="stylesheet" href="styleRecherche.css"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 		
         {% include 'header.html' %}
@@ -70,8 +71,7 @@
 
 									</a> <a
 										href="/ajouterLigne?refArticle={{ article.refArticle }}"
-										class="button add_to_cart_button product_type_simple">Mettre
-											dans le panier</a>
+										class="button add_to_cart_button product_type_simple">Ajouter au panier</a>
 
 										{% if article.pistes is defined %}
 											{% if article.pistes|length > 0 %}
