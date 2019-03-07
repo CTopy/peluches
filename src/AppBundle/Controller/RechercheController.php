@@ -67,6 +67,7 @@ class RechercheController extends Controller
             $articles = [
 <<<<<<< other/peupler-bdd-2
 <<<<<<< other/peupler-bdd-2
+<<<<<<< other/peupler-bdd-2
 =======
 >>>>>>> BDD Peluches
                 ['Pusheen',30,100,'https://images-na.ssl-images-amazon.com/images/I/81yoVFBAxpL._SL1500_.jpg',[20,10,10],'Squishy','Cookie'],
@@ -131,6 +132,8 @@ class RechercheController extends Controller
                 ['Alpacasso',18,100,'http://stores-fast-infrastructure.com/content/3/81006_Super-mignon-35-cm-alpacasso-cheval-debout-topper-chapeau-alpaga-en-peluche-mouton-animal-jouet-poup%C3%A9e-cadeau-danniversaire-de-no%C3%ABl-denfants-dans-en.jpg',[20,15,15],'Fluffy','Standard']
                 ];
 =======
+=======
+>>>>>>> Retour à entité peluche
                 ["Pusheen le Chat", 30, 100, "https://images-na.ssl-images-amazon.com/images/I/81yoVFBAxpL._SL1500_.jpg", [20, 10, 10], "Squishy", "avec Cookie"],
                 ["Nahyë le Narval", 5, 100, "https://i.ebayimg.com/images/g/rrMAAOSw1TFb2Jt3/s-l640.jpg", [5, 5, 5], "Squishy", "Standard"]
             ];
