@@ -18,7 +18,7 @@ class Peluche extends Article
         "Dur",
         "Billes",
         "Bizarre",
-        "Bouillottes"
+        "Bouillotte"
     ];
     
     /**

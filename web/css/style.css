@@ -1702,7 +1702,8 @@ a:link, a:visited {
   text-decoration: none; }
 a:hover {
   text-decoration: underline;
-  color: #FF4800; }
+  color: #FF4800; 
+}
 
 h1 a:link, h1 a:visited,
 h2 a:link,
@@ -3817,7 +3818,7 @@ button.button,
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   white-space: normal;
-  background: #428bca;
+  background: pink;
   font-weight: 200;
   text-transform: uppercase;
   box-shadow: 0 0 0 0 #888;
