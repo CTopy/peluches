@@ -20,6 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use AppBundle\Entity\Catalogue\Livre;
 use AppBundle\Entity\Panier\Panier;
 use AppBundle\Entity\Panier\LignePanier;
+use AppBundle\Entity\Catalogue\Peluche;
 
 use Doctrine\ORM\EntityManagerInterface;
 
