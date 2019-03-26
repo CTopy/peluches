@@ -47,7 +47,7 @@ class DefaultController extends Controller
     {
 		$this->init() ;
         $this->initBdd() ;
-		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a");
+		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a GROUP BY a.titre");
 		$articles = $query->getResult();
 		return $this->render('home.html.twig', [
             'articles' => $articles,

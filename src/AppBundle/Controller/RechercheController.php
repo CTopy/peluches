@@ -38,9 +38,6 @@ class RechercheController extends Controller
      */
     public function afficheRechercheAction(Request $request, LoggerInterface $logger)
     {
-        
-        
-        
 		return $this->render('recherche.html.twig', [
             'articles' => $articles,
         ]);
@@ -51,7 +48,7 @@ class RechercheController extends Controller
      */
     public function afficheRechercheParMotCleAction(Request $request, LoggerInterface $logger)
     {
-		$this->initAmazon() ;
+//		$this->initAmazon() ;
 		//$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a "
 		//										  ." where a.titre like :motCle");
 		//$query->setParameter("motCle", "%".$request->query->get("motCle")."%") ;
