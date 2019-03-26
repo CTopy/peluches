@@ -119,9 +119,24 @@ span.price{
 
 /************************************PANIER**************************************/
 
-div.woocommerce{
+div .woocommerce{
     font-family: 'Fredoka One', cursive;
     font-size: 18px;
     text-decoration: none;
 }
 
+.actions .button:hover{
+    background-color: hotpink;
+}
+
+.actions .button{
+    background-color: #DB2E71;
+}
+
+#menu-item-290>a{
+    color: white;
+}
+
+ul.nav li.current_page_item a, ul.nav li.current_page_parent a, ul.nav li.current-menu-ancestor a, ul.nav li.current-cat a, ul.nav li.current-menu-item a{
+    background-color:#b11954;
+}
