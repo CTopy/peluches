@@ -19,9 +19,7 @@ class Article
      *
      * @ORM\Column(name="id", type="string")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\ManyToOne(targetEntity="Article")
-     * @ORM\JoinColumn(name="refArticle", referencedColumnName="refColoris")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $refArticle;
 

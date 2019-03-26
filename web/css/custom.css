@@ -1,3 +1,6 @@
+/************************************ACCUEIL**************************************/
+
+
 a.button {
     background-color: hotpink;
 }
@@ -5,3 +8,120 @@ a.button {
 a.button:hover {
     background-color: pink;
 }
+
+li, a, input, button{
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+h3{
+    font-family: 'Fredoka One', cursive;
+    font-size: 10px;
+    text-decoration: none;
+    color: #DB2E71;
+    margin-top: -50px;
+    
+}
+
+img{
+    margin-bottom: 0;
+}
+
+ul.products li.product .price, ul.products li.product .star-rating {
+    margin: 0
+}
+
+h3:hover{
+    font-family: 'Fredoka One', cursive;
+    font-size: 10px;
+    text-decoration: none !important;
+    color: #DB2E71;
+    margin-top: -50px;
+}
+
+ins>span.amount{
+    font-size: 30px;
+    text-decoration: none;
+}
+
+h1.page-title{
+    font-family: 'Fredoka One', cursive;
+    font-size: 40px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 25px;
+    border-top: 5px solid #EEF7FF;
+    padding-top: 35px;
+    
+}
+
+#panier{
+    font-size: 40px;
+    color: white;
+    margin: 20px 5px 24px 30px;
+}
+
+button>i{
+    font-size: 20px;
+    color: white;
+}
+
+button.btn-secondary{
+    background-color: #68768A;
+}
+
+#logoPlush{
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+nav{
+    background-color: #DF0053;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+a.nav-link{
+    color:#FFDAF0;
+    font-size: 30px;
+    text-decoration: none;
+    font-family: 'Fredoka One', cursive;
+}
+
+#accueilTitre{
+    color: #FCB6DF;
+    font-size: 50px;
+    text-decoration: none;
+    font-family: 'Fredoka One', cursive;
+    margin-left: 25px;
+}
+
+.button.add_to_cart_button.product_type_simple{
+    font-size: 20px;
+    margin-top: -50px;
+   
+}
+
+span.price{
+    margin: 0;
+}
+
+.carousel-item {
+    max-height: 500px;
+}
+
+#wrapper {
+    max-width: 1500px;
+}
+
+/************************************PANIER**************************************/
+
+div.woocommerce{
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    text-decoration: none;
+}
+
