@@ -23,6 +23,8 @@ use AppBundle\Entity\Catalogue\Musique;
 use AppBundle\Entity\Catalogue\Piste;
 use AppBundle\Entity\Catalogue\Peluche;
 
+use Doctrine\ORM\Query\ResultSetMapping;
+
 class RechercheController extends Controller
 {
 	private $entityManager;
@@ -36,8 +38,6 @@ class RechercheController extends Controller
      */
     public function afficheRechercheAction(Request $request, LoggerInterface $logger)
     {
-		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a");
-		$articles = $query->getResult();
 		return $this->render('recherche.html.twig', [
             'articles' => $articles,
         ]);
@@ -48,7 +48,7 @@ class RechercheController extends Controller
      */
     public function afficheRechercheParMotCleAction(Request $request, LoggerInterface $logger)
     {
-		$this->initAmazon() ;
+//		$this->initAmazon() ;
 		//$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a "
 		//										  ." where a.titre like :motCle");
 		//$query->setParameter("motCle", "%".$request->query->get("motCle")."%") ;
