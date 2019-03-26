@@ -61,7 +61,7 @@
 								<ul class="products">
 									{% for article in articles %}
 									<li class="product type-product"><a
-										href="/ajouterLigne?refArticle={{ article.refArticle }}"> <img
+										href="/article?ref={{ article.refArticle }}"> <img
 											src="{{ article.image }}"
 											class="attachment-shop_catalog wp-post-image" alt="poster_2_up"
 											height="300" width="300"/>
@@ -70,7 +70,7 @@
 												</ins></span>
 
 									</a> <a
-										href="/ajouterLigne?refArticle={{ article.refArticle }}"
+										href="/article?ref={{ article.refArticle }}"
 										class="button add_to_cart_button product_type_simple">Ajouter au panier</a>
 
 										{% if article.pistes is defined %}

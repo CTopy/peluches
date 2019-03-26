@@ -2,36 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-       
-        <title>ACCUEIL - PLUSHLAND</title>
         <link rel="stylesheet" href="styleRecherche.css"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 		
         {% include 'header.html' %}
-		<script type="text/javascript">
-			window.addEventListener('load', myFunction, false);
-			function myFunction(event) {
-				{% for article in articles %}
-					{% if article.pistes is defined %}
-						{% if article.pistes|length > 0 %}
-				var myPlaylist_{{ article.refArticle }}= new jPlayerPlaylist({
-					cssSelectorAncestor : '#jp_container_{{ article.refArticle }}',
-					jPlayer: '#jquery_jplayer_{{ article.refArticle }}'}, [
-					{% for piste in article.pistes %}
-						{ title:'{{ piste.titre }}', mp3:'{{ piste.url }}' },
-					{% endfor %}
-					], { swfPath : '/js/jplayer-2.9.2/jplayer', supplied : 'mp3', wmode: 'window',
-					useStateClassSkin: true, autoBlur: false, smoothPlayBar: true,
-					keyEnabled: true });
-					var jp_playlist_tab = document.getElementsByClassName('jp-playlist') ;
-					for (i = 0; i < jp_playlist_tab.length; i++) {
-						jp_playlist_tab[i].style.display = 'none';
-					}
-						{% endif %}
-					{% endif %}
-				{% endfor %}
-			}
-		</script>
+        <title>{{articles[0].titre}} - PLUSHLAND</title>
     </head>
 	<body>
 		<div id="wrapper">
@@ -95,7 +70,7 @@
 								<ul class="products">
 									{% for article in articles %}
 									<li class="product type-product"><a
-										href="/article?ref={{ article.refArticle }}"> <img
+										href="/ajouterLigne?refArticle={{ article.refArticle }}"> <img
 											src="{{ article.image }}"
 											class="attachment-shop_catalog wp-post-image" alt="poster_2_up"
 											height="300" width="300"/>
@@ -104,7 +79,7 @@
 												</ins></span>
 
 									</a> <a
-										href="/article?ref={{ article.refArticle }}"
+										href="/ajouterLigne?refArticle={{ article.refArticle }}"
 										class="button add_to_cart_button product_type_simple">Ajouter au panier</a>
 
 										{% if article.pistes is defined %}
