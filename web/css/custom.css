@@ -1,3 +1,6 @@
+/************************************ACCUEIL**************************************/
+
+
 a.button {
     background-color: hotpink;
 }
@@ -113,3 +116,12 @@ span.price{
 #wrapper {
     max-width: 1500px;
 }
+
+/************************************PANIER**************************************/
+
+div.woocommerce{
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    text-decoration: none;
+}
+
