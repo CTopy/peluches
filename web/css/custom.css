@@ -2,11 +2,11 @@
 
 
 a.button {
-    background-color: hotpink;
+    background-color: #DB2E71;
 }
 
 a.button:hover {
-    background-color: pink;
+    background-color: hotpink;
 }
 
 li, a, input, button{
@@ -15,7 +15,7 @@ li, a, input, button{
     text-decoration: none;
 }
 
-h3{
+h3, h2{
     font-family: 'Fredoka One', cursive;
     font-size: 10px;
     text-decoration: none;
@@ -139,4 +139,25 @@ div .woocommerce{
 
 ul.nav li.current_page_item a, ul.nav li.current_page_parent a, ul.nav li.current-menu-ancestor a, ul.nav li.current-cat a, ul.nav li.current-menu-item a{
     background-color:#b11954;
+}
+
+.wc-proceed-to-checkout a.checkout-button button alt wc-forward{
+    background-color: aqua;
+}
+
+/************************************FOOTER**************************************/
+
+#logoPlushFooter{
+    width: 15%;
+}
+
+#credit{
+    text-align: right;
+}
+
+/************************************RECHERCHE**************************************/
+
+#navigationRecherche{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
