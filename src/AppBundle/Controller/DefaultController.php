@@ -58,23 +58,29 @@ class DefaultController extends Controller
     * @Route("/article", name="article")
     */
     public function article(Request $request) {
-        $titre = $request->query->get('titre');
+        $this->init();
+        $ref = $request->query->get('ref');
         
         //Création de la requête
-        $query = $this->entityManager->createQuery('
+//        $query = $this->entityManager->createQuery('
+//            SELECT a FROM AppBundle\Entity\Catalogue\Article a
+//            WHERE a.titre = (
+//                SELECT b.titre FROM AppBundle\Entity\Catalogue\Article b
+//                WHERE a.refArticle = ?1
+//            )
+//            ')
+            $query = $this->entityManager->createQuery('
             SELECT a FROM AppBundle\Entity\Catalogue\Article a
             WHERE a.titre = (
-                SELECT b FROM AppBundle\Entity\Catalogue\Article b
-                WHERE a.id = ?1
+                SELECT b.titre FROM AppBundle\Entity\Catalogue\Article b WHERE b.refArticle = ?1
             )
-        ')
-           ->setParameter(1, $titre);
+            ')
+           ->setParameter(1, $ref);
         
         //Executer la requête
-        $query = $query->getResult();
-        $articles = $query->getArrayResult();
+        $articles = $query->getResult();
         
-        return $this->render('home.html.twig', [
+        return $this->render('article.html.twig', [
             'articles' => $articles
         ]);
     }
