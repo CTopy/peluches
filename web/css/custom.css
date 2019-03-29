@@ -145,6 +145,17 @@ ul.nav li.current_page_item a, ul.nav li.current_page_parent a, ul.nav li.curren
     background-color: aqua;
 }
 
+h1.title{
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+p.cart-empty{
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    text-decoration: none;
+}
 /************************************FOOTER**************************************/
 
 #logoPlushFooter{
@@ -161,3 +172,4 @@ ul.nav li.current_page_item a, ul.nav li.current_page_parent a, ul.nav li.curren
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
+
