@@ -28,12 +28,16 @@ class Peluche extends Article
      */
     private $hauteur;
     
+    public function getHauteur() {
+        return($this->hauteur);
+    }
+    
     public function setHauteur($h) {
         $this->hauteur = $h;
     }
     
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="longueur", type="float")
      */
@@ -42,22 +46,29 @@ class Peluche extends Article
     public function setLongueur($lo) {
         $this->longueur = $lo;
     }
-    
+       public function getLongueur() {
+        return($this->longueur);
+    }
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="largeur", type="float")
      */
     private $largeur;
     
-    public function getDimensions() {
-        return ["hauteur" => $this->hauteur, 
-                "largeur" => $this->largeur, 
-                "longueur" => $this->longueur];
+    public function getLargeur() {
+        return($this->largeur);
     }
     
     public function setLargeur($la) {
         $this->largeur = $la;
+    }
+    
+        
+    public function getDimensions() {
+        return ["hauteur" => $this->hauteur, 
+                "largeur" => $this->largeur, 
+                "longueur" => $this->longueur];
     }
     
     /**

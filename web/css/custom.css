@@ -34,10 +34,8 @@ ul.products li.product .price, ul.products li.product .star-rating {
 
 h3:hover{
     font-family: 'Fredoka One', cursive;
-    font-size: 10px;
     text-decoration: none !important;
     color: #DB2E71;
-    margin-top: -50px;
 }
 
 ins>span.amount{
@@ -172,4 +170,6 @@ p.cart-empty{
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
+
+/************************************ARTICLE**************************************/
 

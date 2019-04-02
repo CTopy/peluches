@@ -59,6 +59,7 @@ class DefaultController extends Controller
     */
     public function article(Request $request) {
         $this->init();
+        $this->initBdd();
         $ref = $request->query->get('ref');
         
             $query = $this->entityManager->createQuery('
@@ -192,7 +193,7 @@ Vendues au choix à l\'unité ou par lot des 4 peluches.
 En cas d\'achat du lot de 4 peluches bénéficiez d\'une réduction sur le prix de vente ainsi que des frais de livraison identiques à ceux de l\'envoi d\'une seule peluche. 
 Dimension : environ 19 cm.
 Peluches Doraemon hautes qualités neuves sous licence officielle, avec un toucher doux.'],
-                ['Alpacasso',30,100,'https://d3ieicw58ybon5.cloudfront.net/ex/350.350/shop/product/dc0ac784dc884266a03c95c8c43468b8.jpg',[30,25,20],'Fluffy','CMJN','Idée Cadeau pour les fans d\'Alpacasso !
+                ['Alpacasso',30,0,'https://d3ieicw58ybon5.cloudfront.net/ex/350.350/shop/product/dc0ac784dc884266a03c95c8c43468b8.jpg',[30,25,20],'Fluffy','CMJN','Idée Cadeau pour les fans d\'Alpacasso !
 La nouvelle version de cette grande peluche CMJN Alpacasso de 40cm hauteur ! Très kawaii, plus douce et plus brillante ~
 C\'est une nouvelle collection officielle de la marque japonaise Amuse !'],
                 ['Alpacasso',30,100,'https://www.dhresource.com/webp/m/0x0s/f2-albu-g4-M01-12-73-rBVaEFnPJMuACxFCAAFX8jAN0r8944.jpg/rainbow-alpacasso-plush-13cm-cute-kawaii.jpg',[30,25,20],'Fluffy','RVB','Idée Cadeau pour les fans d\'Alpacasso !
