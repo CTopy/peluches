@@ -89,5 +89,20 @@ class Peluche extends Article
     public function setColoris($nvColor) {
         $this->coloris = $nvColor;
     }
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string")
+     */
+    private $description;
+    
+    public function getDescription() {
+        return $this->description;
+    }
+    
+    public function setDescription($nvDescription) {
+        $this->description = $nvDescription;
+    }
 }
 

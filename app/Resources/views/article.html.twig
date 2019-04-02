@@ -231,19 +231,9 @@ img {
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">{{articles[0].titre}} - [{ articles[currentColorSelected].coloris }]</h3>
-						<div class="rating">
-							<div class="stars">
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-							</div>
-							<span class="review-no">41 reviews</span>
-						</div>
-						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+						
+						<p class="product-description">[{descriptionCleaned}]</p>
 						<h4 class="price"><span id="prix-produit">[{ articles[currentColorSelected].prix }] €</span></h4>
-						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 						<h5 class="colors">Couleur :
                             <div class="form-group">
                                 <select @change="displayPrice" class="form-control" id="select-color" name="color-selected">
@@ -270,10 +260,15 @@ img {
         data: {
             articles: [
                 {% for article in articles %}
-                {coloris: "{{article.coloris}}", prix: {{article.prix}}},
+                {coloris: "{{article.coloris}}", prix: {{article.prix}}, description: `{{article.description}}`},
                 {% endfor %}
             ],
             currentColorSelected: "{{0}}"
+        },
+        computed: {
+            descriptionCleaned() {
+                return(this.articles[this.currentColorSelected].description.replace(/&#039;/gi, "'"));
+            }
         },
         methods: {
             displayPrice(e) {
