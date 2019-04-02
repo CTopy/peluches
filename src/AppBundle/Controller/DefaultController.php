@@ -54,6 +54,37 @@ class DefaultController extends Controller
         ]);
     }
     
+    /**
+    * @Route("/article", name="article")
+    */
+    public function article(Request $request) {
+        $this->init();
+        $ref = $request->query->get('ref');
+        
+        //Création de la requête
+//        $query = $this->entityManager->createQuery('
+//            SELECT a FROM AppBundle\Entity\Catalogue\Article a
+//            WHERE a.titre = (
+//                SELECT b.titre FROM AppBundle\Entity\Catalogue\Article b
+//                WHERE a.refArticle = ?1
+//            )
+//            ')
+            $query = $this->entityManager->createQuery('
+            SELECT a FROM AppBundle\Entity\Catalogue\Article a
+            WHERE a.titre = (
+                SELECT b.titre FROM AppBundle\Entity\Catalogue\Article b WHERE b.refArticle = ?1
+            )
+            ')
+           ->setParameter(1, $ref);
+        
+        //Executer la requête
+        $articles = $query->getResult();
+        
+        return $this->render('article.html.twig', [
+            'articles' => $articles
+        ]);
+    }
+    
     private function initBdd() {
         if (count($this->entityManager->getRepository("AppBundle\Entity\Catalogue\Article")->findAll()) == 0) {
             //modele : [titre, prix, disponibilite, image, [hauteur, largeur, longueur], texture]
@@ -131,142 +162,5 @@ class DefaultController extends Controller
                 $index++;
             }
         }
-    }
-	
-    /**
-     * @Route("/test1", name="test1")
-     */
-    public function test1Action(Request $request)
-    {
-		$this->init() ;
-        $panier = new Panier() ;
-		$livre = $this->entityManager->getReference("AppBundle\Entity\Catalogue\Livre", "1141555897821");
-		$panier->ajouterLigne($livre);
-		$livre = $this->entityManager->getReference("AppBundle\Entity\Catalogue\Livre", "1141556299459");
-		$panier->ajouterLigne($livre);
-		// Affichage du contenu du panier:
-		$it = $panier->getLignesPanier()->getIterator();
-		$out = "" ;
-		while ($it->valid()) {
-			$ligne = $it->current();
-			$it->next();
-			$livre = $ligne->getLivre();
-			$out .= $livre->getRefLivre();
-			$out .= " - ";
-			$out .= $livre->getAuteur();
-			$out .= " - ";
-			$out .= $ligne->getPrixUnitaire();
-			$out .= " - ";
-			$out .= $ligne->getPrixTotal();
-			$out .= " - ";
-			$out .= $ligne->getQuantite();
-			$out .= "\n";
-		}
-		$out .= $panier->getTotal();
-		$out .= "\n";
-		
-		$response = new Response() ;
-		$response->headers->set("Content-Type", "text/plain") ;
-		$response->setContent($out) ;
-        return $response ;
-    }
-	
-    /**
-     * @Route("/test2", name="test2")
-     */
-    public function test2Action(Request $request)
-    {
-		$this->init() ;
-        $panier = new Panier() ;
-		$livre = $this->entityManager->getReference("AppBundle\Entity\Catalogue\Livre", "1141555897821");
-		$panier->ajouterLigne($livre);
-		$livre = $this->entityManager->getReference("AppBundle\Entity\Catalogue\Livre", "1141556299459");
-		$panier->ajouterLigne($livre);
-		
-		// Affichage du contenu du panier:
-		$it = $panier->getLignesPanier()->getIterator();
-		$out = "" ;
-		while ($it->valid()) {
-			$ligne = $it->current();
-			$it->next();
-			$livre = $ligne->getLivre();
-			$out .= $livre->getRefLivre();
-			$out .= " - ";
-			$out .= $livre->getAuteur();
-			$out .= " - ";
-			$out .= $ligne->getPrixUnitaire();
-			$out .= " - ";
-			$out .= $ligne->getPrixTotal();
-			$out .= " - ";
-			$out .= $ligne->getQuantite();
-			$out .= "\n";
-		}
-		$out .= $panier->getTotal();
-		$out .= "\n";
-		
-		$out .=  "panier.ajouterLigne(livre)" ;
-		$out .= "\n";
-		$livre = $this->entityManager->getReference("AppBundle\Entity\Catalogue\Livre", "1141556299459");
-		$panier->ajouterLigne($livre);
-		
-		// Affichage du contenu du panier:
-		$it = $panier->getLignesPanier()->getIterator();
-		while ($it->valid()) {
-			$ligne = $it->current();
-			$it->next();
-			$livre = $ligne->getLivre();
-			$out .= $livre->getRefLivre();
-			$out .= " - ";
-			$out .= $livre->getAuteur();
-			$out .= " - ";
-			$out .= $ligne->getPrixUnitaire();
-			$out .= " - ";
-			$out .= $ligne->getPrixTotal();
-			$out .= " - ";
-			$out .= $ligne->getQuantite();
-			$out .= "\n";
-		}
-		$out .= $panier->getTotal();
-		$out .= "\n";
-
-		$out .=  "panier.supprimerLigne(\"1141556299459\")" ;
-		$out .= "\n";
-		$panier->supprimerLigne("1141556299459");
-		
-		// Affichage du contenu du panier:
-		$it = $panier->getLignesPanier()->getIterator();
-		while ($it->valid()) {
-			$ligne = $it->current();
-			$it->next();
-			$livre = $ligne->getLivre();
-			$out .= $livre->getRefLivre();
-			$out .= " - ";
-			$out .= $livre->getAuteur();
-			$out .= " - ";
-			$out .= $ligne->getPrixUnitaire();
-			$out .= " - ";
-			$out .= $ligne->getPrixTotal();
-			$out .= " - ";
-			$out .= $ligne->getQuantite();
-			$out .= "\n";
-		}
-		$out .= $panier->getTotal();
-		$out .= "\n";
-		
-		$out .=  "panier.viderPanier()" ;
-		$out .= "\n";
-		$panier->viderPanier();
-		
-		$it = $panier->getLignesPanier()->getIterator();
-		if ($it->valid())
-			$out .=  "Non vide ???" ;
-		else
-			$out .=  "Vide" ;
-		$out .= "\n";
-		
-		$response = new Response() ;
-		$response->headers->set("Content-Type", "text/plain") ;
-		$response->setContent($out) ;
-        return $response ;
     }
 }
