@@ -7,52 +7,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 		
         {% include 'header.html' %}
-		<script type="text/javascript">
-			window.addEventListener('load', myFunction, false);
-			function myFunction(event) {
-				{% for article in articles %}
-					{% if article.pistes is defined %}
-						{% if article.pistes|length > 0 %}
-				var myPlaylist_{{ article.refArticle }}= new jPlayerPlaylist({
-					cssSelectorAncestor : '#jp_container_{{ article.refArticle }}',
-					jPlayer: '#jquery_jplayer_{{ article.refArticle }}'}, [
-					{% for piste in article.pistes %}
-						{ title:'{{ piste.titre }}', mp3:'{{ piste.url }}' },
-					{% endfor %}
-					], { swfPath : '/js/jplayer-2.9.2/jplayer', supplied : 'mp3', wmode: 'window',
-					useStateClassSkin: true, autoBlur: false, smoothPlayBar: true,
-					keyEnabled: true });
-					var jp_playlist_tab = document.getElementsByClassName('jp-playlist') ;
-					for (i = 0; i < jp_playlist_tab.length; i++) {
-						jp_playlist_tab[i].style.display = 'none';
-					}
-						{% endif %}
-					{% endif %}
-				{% endfor %}
-			}
-		</script>
     </head>
 	<body>
 		<div id="wrapper">
 			<div id="inner-wrapper">
-				<header id="header" class="col-full">
-					<div id="logo">
-						<h1 class="site-title">PLUSHLAND</h1>
-					</div>
-				</header>
-				<nav id="navigation" class="col-full" role="navigation">
-					<ul id="main-nav" class="nav fl">
-						<li id="menu-item-290"
-							class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item">
-							<a href="/afficheRecherche">Rechercher
-								un article</a>
-						</li>
-						<li id="menu-item-290"
-							class="menu-item menu-item-type-custom menu-item-object-custom">
-							<a href="/affichePanier">Panier</a>
-						</li>
-					</ul>
-				</nav>
+                {% include 'nav.html' %}
 				<div id="content" class="site-content" tabindex="-1">
 					<div class="col-full">
 						<div class="primary" class="content-area">
