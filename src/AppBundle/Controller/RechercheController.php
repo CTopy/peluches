@@ -44,9 +44,9 @@ class RechercheController extends Controller
     }
 	
     /**
-     * @Route("/afficheRechercheParMotCle", name="afficheRechercheParMotCle")
+     * @Route("/recherche", name="recherche")
      */
-    public function afficheRechercheParMotCleAction(Request $request, LoggerInterface $logger)
+    public function rechercheAction(Request $request, LoggerInterface $logger)
     {
 //		$this->initAmazon() ;
 //		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a "

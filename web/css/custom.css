@@ -2,11 +2,11 @@
 
 
 a.button {
-    background-color: hotpink;
+    background-color: #DB2E71;
 }
 
 a.button:hover {
-    background-color: pink;
+    background-color: hotpink;
 }
 
 li, a, input, button{
@@ -15,7 +15,7 @@ li, a, input, button{
     text-decoration: none;
 }
 
-h3{
+h3, h2{
     font-family: 'Fredoka One', cursive;
     font-size: 10px;
     text-decoration: none;
@@ -34,10 +34,8 @@ ul.products li.product .price, ul.products li.product .star-rating {
 
 h3:hover{
     font-family: 'Fredoka One', cursive;
-    font-size: 10px;
     text-decoration: none !important;
     color: #DB2E71;
-    margin-top: -50px;
 }
 
 ins>span.amount{
@@ -117,11 +115,75 @@ span.price{
     max-width: 1500px;
 }
 
+img.attachment-shop_catalog.wp-post-image:hover{
+    border: solid 15px lightpink;
+    border-radius: 5px;
+    transition: all 0.05s ease-in;
+    
+}
+
+img.attachment-shop_catalog.wp-post-image{
+    border: solid 0px lightpink;
+    border-radius: 5px;
+    transition: all 0.05s ease-out;
+    
+}
+
 /************************************PANIER**************************************/
 
-div.woocommerce{
+div .woocommerce{
     font-family: 'Fredoka One', cursive;
     font-size: 18px;
     text-decoration: none;
 }
+
+.actions .button:hover{
+    background-color: hotpink;
+}
+
+.actions .button{
+    background-color: #DB2E71;
+}
+
+#menu-item-290>a{
+    color: white;
+}
+
+ul.nav li.current_page_item a, ul.nav li.current_page_parent a, ul.nav li.current-menu-ancestor a, ul.nav li.current-cat a, ul.nav li.current-menu-item a{
+    background-color:#b11954;
+}
+
+.wc-proceed-to-checkout a.checkout-button button alt wc-forward{
+    background-color: aqua;
+}
+
+h1.title{
+    font-family: 'Fredoka One', cursive;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+p.cart-empty{
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    text-decoration: none;
+}
+/************************************FOOTER**************************************/
+
+#logoPlushFooter{
+    width: 15%;
+}
+
+#credit{
+    text-align: right;
+}
+
+/************************************RECHERCHE**************************************/
+
+#navigationRecherche{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/************************************ARTICLE**************************************/
 

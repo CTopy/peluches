@@ -2,7 +2,7 @@
     
 /*****************globals*************/
 body {
-  font-family: 'open sans';
+  font-family: 'Fredoka One', cursive;
   overflow-x: hidden; }
 
 img {
@@ -31,16 +31,16 @@ img {
 .preview-thumbnail.nav-tabs {
   border: none;
   margin-top: 15px; }
-  .preview-thumbnail.nav-tabs li {
+.preview-thumbnail.nav-tabs li {
     width: 18%;
     margin-right: 2.5%; }
-    .preview-thumbnail.nav-tabs li img {
+.preview-thumbnail.nav-tabs li img {
       max-width: 100%;
       display: block; }
-    .preview-thumbnail.nav-tabs li a {
+.preview-thumbnail.nav-tabs li a {
       padding: 0;
       margin: 0; }
-    .preview-thumbnail.nav-tabs li:last-of-type {
+.preview-thumbnail.nav-tabs li:last-of-type {
       margin-right: 0; }
 
 .tab-content {
@@ -59,7 +59,7 @@ img {
   line-height: 1.5em; }
 
 @media screen and (min-width: 997px) {
-  .wrapper {
+.wrapper {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -80,21 +80,41 @@ img {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
-          flex-grow: 1; }
+          flex-grow: 0.3; }
 
 .product-title, .price, .sizes, .colors {
+  font-family: 'Fredoka One', cursive;     
   text-transform: UPPERCASE;
-  font-weight: bold; }
+  font-weight: bold; 
+}
 
+.product-description{
+    color: grey;
+    font-weight: 100; 
+    font-size: 20px;
+    text-align: justify;
+    
+    
+}
+
+h5.colors{
+        height: 15px;
+}
+   
 .checked, .price span {
-  color: #ff9f1a; }
+  color: #FCB6DF;
+  font-size: 50px;
+  font-weight: 100;
+}
 
 .product-title, .rating, .product-description, .price, .vote, .sizes {
-  margin-bottom: 15px; }
+  font-family: 'Fredoka One', cursive;
+   margin-bottom: 15px; }
 
 .product-title {
-    font-size: 2em;
-  margin-top: 0; }
+ font-size: 2em;
+  margin-top: 0;
+    }
 
 .size {
   margin-right: 10px; }
@@ -110,34 +130,34 @@ img {
   border-radius: 2px; }
   .color:first-of-type {
     margin-left: 20px; }
-
-.add-to-cart, .like {
-  background: #ff9f1a;
-  padding: 1.2em 1.5em;
-  border: none;
-  text-transform: UPPERCASE;
-  font-weight: bold;
-  color: #fff;
-  -webkit-transition: background .3s ease;
-          transition: background .3s ease; }
-  .add-to-cart:hover, .like:hover {
-    background: #b36800;
-    color: #fff; }
-    
-    button {
+   
+    button.button.add_to_cart_button.button.btn.btn-default{
         background-color: #DB2E71;
-        font-family: 'Fredoka One';
+        font-family:'Fredoka One', cursive !important;
+        font-size: 20px;
+        margin-left: 25%;
     }
     
-    button:hover {
+    button.button.add_to_cart_button.button.btn.btn-default:hover {
         background-color: hotpink;
     }
-
+    .product-dimension{
+        font-family: 'Fredoka One', cursive;
+        font-size: 20px;
+        color: #b4b4b4;
+    }
+    
+    .product-texture{
+        font-family: 'Fredoka One', cursive;
+        font-size: 18px;
+         color: #b4b4b4;
+    }
+    
 .not-available {
   text-align: center;
   line-height: 2em; }
   .not-available:before {
-    font-family: fontawesome;
+     font-family: 'Fredoka One', cursive;
     content: "\f00d";
     color: #fff; }
 
@@ -211,19 +231,23 @@ img {
 						<h3 class="product-title">{{articles[0].titre}} - [{ articles[currentColorSelected].coloris }]</h3>
 						
 						<p class="product-description">[{descriptionCleaned}]</p>
+                        <p class="product-dimension">Dimensions : [{ articles[currentColorSelected].hauteur }] x [{ articles[currentColorSelected].largeur }] x [{ articles[currentColorSelected].longueur}]</p>
+                        <p class="product-texture">Texture : [{ articles[currentColorSelected].texture }]</p>
 						<h4 class="price"><span id="prix-produit">[{ articles[currentColorSelected].prix }] €</span></h4>
-						<h5 class="colors">Couleur :
-                            <div class="form-group">
-                                <select @change="displayPrice" class="form-control" id="select-color" name="color-selected">
-                                    {% for index,article in articles %}
-                                    <option value="{{article.coloris}}"
-                                            >{{article.coloris}}</option>
-                                    {% endfor %}
-                                </select>
+                            {% if articles|length > 1 %}
+                            <h5 class="colors">Couleur :
+                                <div class="form-group">
+                                    <select @change="displayPrice" class="form-control" id="select-color" name="color-selected">
+                                        {% for index,article in articles %}
+                                        <option value="{{article.coloris}}"
+                                                >{{article.coloris}}</option>
+                                        {% endfor %}
+                                    </select>
+                            {% endif %}
                             </div>
 						</h5>
 						<div class="action">
-							<button class="add_to_cart_button button btn btn-default" type="button">Ajouter au panier</button>
+                            <a :href="addToCartLink"><button class="add_to_cart_button button btn btn-default" type="button">Ajouter au panier</button></a>
 						</div>
 					</div>
 				</div>
@@ -238,7 +262,7 @@ img {
         data: {
             articles: [
                 {% for article in articles %}
-                {coloris: "{{article.coloris}}", prix: {{article.prix}}, description: `{{article.description}}`},
+                {refArticle:{{article.refArticle}},coloris: "{{article.coloris}}", prix: {{article.prix}}, description: `{{article.description}}`,hauteur:{{article.hauteur}}, largeur:{{article.largeur}},longueur:{{article.longueur}}, texture:"{{article.texture}}"},
                 {% endfor %}
             ],
             currentColorSelected: "{{0}}"
@@ -246,6 +270,9 @@ img {
         computed: {
             descriptionCleaned() {
                 return(this.articles[this.currentColorSelected].description.replace(/&#039;/gi, "'"));
+            },
+            addToCartLink() {
+                return("/ajouterLigne?refArticle="+this.articles[this.currentColorSelected].refArticle)
             }
         },
         methods: {

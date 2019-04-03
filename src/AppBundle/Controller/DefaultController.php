@@ -59,6 +59,7 @@ class DefaultController extends Controller
     */
     public function article(Request $request) {
         $this->init();
+        $this->initBdd();
         $ref = $request->query->get('ref');
         $query = $this->entityManager->createQuery('
         SELECT a FROM AppBundle\Entity\Catalogue\Article a
