@@ -49,9 +49,9 @@ class RechercheController extends Controller
     public function afficheRechercheParMotCleAction(Request $request, LoggerInterface $logger)
     {
 //		$this->initAmazon() ;
-		//$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a "
-		//										  ." where a.titre like :motCle");
-		//$query->setParameter("motCle", "%".$request->query->get("motCle")."%") ;
+//		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a "
+//												  ." where a.titre like :motCle");
+//		$query->setParameter("motCle", "%".$request->query->get("motCle")."%") ;
 		$query = $this->entityManager->createQuery("SELECT a FROM AppBundle\Entity\Catalogue\Article a "
 												  ." where a.titre like '%".addslashes($request->query->get("motCle"))."%'");
 		$articles = $query->getResult();
